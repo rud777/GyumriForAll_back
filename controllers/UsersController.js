@@ -14,11 +14,12 @@ class UsersController {
         age: 'required|string|min:2',
         gender: 'required|string|in:male,female',
         email: 'required|email',
+        phoneNumber: 'required|string|regex:/^\\+?[1-9][0-9]{7,14}$/',
         password: 'required|string|min:6',
       });
 
       const {
-        firstName, lastName, age, gender, email, password,
+        firstName, lastName, age, gender, email, phoneNumber, password,
       } = req.body;
 
       const exists = await Users.findOne({
@@ -35,7 +36,7 @@ class UsersController {
       }
 
       const user = await Users.create({
-        firstName, lastName, age, gender, email, password,
+        firstName, lastName, age, gender, email, phoneNumber, password,
       });
 
       res.json({
@@ -99,11 +100,11 @@ class UsersController {
 
   static delete = async (req, res, next) => {
     try {
-      validate(req.body, {
+      validate(req.params, {
         id: 'required|numeric',
       });
 
-      const { id } = req.body;
+      const { id } = req.params;
 
       const user = await Users.destroy({
         where: {

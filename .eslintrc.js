@@ -12,7 +12,7 @@ module.exports = {
   },
   rules: {
     'no-shadow': 'off',
-    'no-restricted-syntax': ['error', 'FunctionExpression', 'WithStatement', "BinaryExpression[operator='in']"],
+    'no-restricted-syntax': [0, 'FunctionExpression', 'WithStatement', "BinaryExpression[operator='in']"],
     'no-use-before-define': [0, {
       functions: true,
       classes: true,
@@ -20,6 +20,6 @@ module.exports = {
       allowNamedExports: false,
     }],
     'no-restricted-globals': [0, 'event', 'fdescribe'],
-
+    'import/prefer-default-export': 'off',
   },
 };

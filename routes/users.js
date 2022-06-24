@@ -9,6 +9,6 @@ router.get('/account/me', UsersController.accountMe);
 router.get('/list', UsersController.list);
 router.get('/account/:id', UsersController.account);
 router.put('/update', UsersController.update);
-router.delete('/delete', UsersController.delete);
+router.delete('/delete/:id', UsersController.delete);
 
 export default router;
